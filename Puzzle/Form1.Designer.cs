@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.b16 = new System.Windows.Forms.Button();
             this.b15 = new System.Windows.Forms.Button();
@@ -47,6 +48,8 @@
             this.b1 = new System.Windows.Forms.Button();
             this.BtnNuevo = new System.Windows.Forms.Button();
             this.lblM = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lblTiempo = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -274,12 +277,27 @@
             this.lblM.TabIndex = 2;
             this.lblM.Text = "Numero de Movidas:";
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // lblTiempo
+            // 
+            this.lblTiempo.AutoSize = true;
+            this.lblTiempo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTiempo.Location = new System.Drawing.Point(764, 118);
+            this.lblTiempo.Name = "lblTiempo";
+            this.lblTiempo.Size = new System.Drawing.Size(207, 25);
+            this.lblTiempo.TabIndex = 3;
+            this.lblTiempo.Text = "Tiempo de Juego: ";
+            // 
             // From1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkRed;
             this.ClientSize = new System.Drawing.Size(1104, 699);
+            this.Controls.Add(this.lblTiempo);
             this.Controls.Add(this.lblM);
             this.Controls.Add(this.BtnNuevo);
             this.Controls.Add(this.groupBox1);
@@ -314,6 +332,8 @@
         private System.Windows.Forms.Button b8;
         private System.Windows.Forms.Button BtnNuevo;
         private System.Windows.Forms.Label lblM;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label lblTiempo;
     }
 }
 

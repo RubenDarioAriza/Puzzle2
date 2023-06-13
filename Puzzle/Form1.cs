@@ -15,6 +15,8 @@ namespace Puzzle
         Button[] b = new Button[16];
         Random rand = new Random();
         private int clickCount = 0;
+        private Timer timer;
+        private int elapsedSeconds;
         public From1()
         {
             InitializeComponent();
@@ -35,6 +37,14 @@ namespace Puzzle
             b[14] = b15;
             b[15] = b16;
             this.IniciaBoton();
+            timer = new Timer();
+            timer.Interval = 1000; // Intervalo de 1 segundo (1000 milisegundos)
+            elapsedSeconds = 0;
+            UpdateElapsedTime();
+
+            // Iniciar el cronómetro
+            timer.Start();
+            timer.Tick += timer1_Tick;
 
             // Agregar eventos de clic a los botones
             for (int i = 0; i < b.Length; i++)
@@ -46,6 +56,7 @@ namespace Puzzle
 
         public void IniciaBoton()
         {
+
             List<int> numeros = Enumerable.Range(1, 15).ToList();
             Random rand = new Random();
 
@@ -152,7 +163,24 @@ namespace Puzzle
             this.IniciaBoton();
             clickCount = 0;
             lblM.Text = "Numero de Movidas: " + clickCount.ToString();
+            elapsedSeconds = 0;
+            UpdateElapsedTime();
 
+            // Iniciar el cronómetro
+            timer.Start();
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            // Actualizar el tiempo transcurrido
+            elapsedSeconds++;
+            UpdateElapsedTime();
+        }
+        private void UpdateElapsedTime()
+        {
+            TimeSpan timeSpan = TimeSpan.FromSeconds(elapsedSeconds);
+            lblTiempo.Text = "Tiempo de Juego: "+timeSpan.ToString(@"hh\:mm\:ss");
         }
     }
 }
